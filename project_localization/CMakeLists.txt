@@ -12,6 +12,11 @@ find_package(nav2_map_server REQUIRED)
 find_package(nav2_amcl REQUIRED)
 find_package(nav2_lifecycle_manager REQUIRED)
 find_package(project_mapping REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "srv/MyServiceMessage.srv"
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -25,9 +30,21 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 endif()
 
+add_executable(spot_recorder src/spots_to_file.cpp)
+ament_target_dependencies(spot_recorder rclcpp geometry_msgs)
+
+rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
+target_link_libraries(spot_recorder ${cpp_typesupport_target})
+
+install(TARGETS
+   spot_recorder
+   DESTINATION lib/${PROJECT_NAME}
+)
+
 install(DIRECTORY
   config
   launch
+  srv
   DESTINATION share/${PROJECT_NAME}
 )
 
