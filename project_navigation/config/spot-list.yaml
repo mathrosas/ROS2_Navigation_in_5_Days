@@ -1,0 +1,33 @@
+pedestrian:
+  position:
+    x: -0.0402992
+    y: -0.129033
+    z: 0
+  orientation:
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+
+corner1:
+  position:
+    x: 0.516232
+    y: -0.127396
+    z: 0
+  orientation:
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+
+corner2:
+  position:
+    x: 0.787378
+    y: -1.04827
+    z: 0
+  orientation:
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+

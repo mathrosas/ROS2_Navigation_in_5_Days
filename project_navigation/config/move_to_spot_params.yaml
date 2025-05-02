@@ -1,0 +1,4 @@
+move_to_spot:
+  ros__parameters:
+    spot_file: "spot-list.yaml"
+    spot_name: "corner1"
